@@ -1,3 +1,4 @@
+]633;E;echo "================ manifest.json ================";add4cf4b-80a3-4da2-87c5-733d6b5a9de7]633;C================ manifest.json ================
 {
   "_version": "1.85.0",
   "sap.app": {
@@ -145,3 +146,92 @@
     "service": "comzlropzlrop"
   }
 }
+
+
+================ Component.js ================
+sap.ui.define([
+    "sap/ui/core/UIComponent",
+    "com/zlrop/zlrop/model/models"
+], (UIComponent, models) => {
+    "use strict";
+
+    return UIComponent.extend("com.zlrop.zlrop.Component", {
+        metadata: {
+            manifest: "json",
+            interfaces: [
+                "sap.ui.core.IAsyncContentCreation"
+            ]
+        },
+
+        init() {
+            // call the base component's init function
+            UIComponent.prototype.init.apply(this, arguments);
+
+            // set the device model
+            this.setModel(models.createDeviceModel(), "device");
+
+            // enable routing
+            this.getRouter().initialize();
+        }
+    });
+});
+
+================ DetailPage.view.xml ================
+<mvc:View
+    controllerName="com.zlrop.zlrop.controller.DetailPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+>
+
+    <Page id="DetailPage" showHeader="false">
+        <content>
+            <Text id="_IDGenText" text="Navigation Successful!" />
+        </content>
+    </Page>
+</mvc:View>
+
+================ DetailPage.controller.js ================
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/core/routing/History"
+], function (Controller, History) {
+    "use strict";
+
+    return Controller.extend("com.zlrop.zlrop.controller.DetailPage", {
+
+        onInit: function () {
+            console.log("Detail Page Loaded");
+        },
+
+        onNavBack: function () {
+            history.back();
+        }
+
+    });
+});
+
+================ MainPage.controller.js ================
+sap.ui.define([
+    "sap/ui/core/mvc/Controller"
+], (Controller) => {
+    "use strict";
+
+    return Controller.extend("com.zlrop.zlrop.controller.MainPage", {
+        onInit() {
+        },
+
+        onRowClick: function (oEvent) {
+            var employeeID = oEvent.getParameter("rowContext").getObject().EmployeeID;
+
+            console.log("Navigating with ID:", employeeID);
+
+            this.getOwnerComponent().getRouter().navTo("RouteDetailPage", {
+                ID: employeeID
+            });
+        }
+
+        
+    });
+});
