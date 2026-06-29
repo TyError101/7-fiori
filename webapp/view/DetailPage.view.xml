@@ -2,13 +2,119 @@
     controllerName="com.zlrop.zlrop.controller.DetailPage"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:smartTable="sap.ui.comp.smarttable"
->
+    xmlns:f="sap.ui.layout.form">
 
-    <Page id="DetailPage" showHeader="false">
+    <Page id="_IDGenPage"
+        title="Employee Details"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
         <content>
-            <Text id="_IDGenText" text="Navigation Successful!" />
+
+            <VBox id="_IDGenVBox"
+                alignItems="Center"
+                class="sapUiMediumMargin">
+
+                <Avatar id="_IDGenAvatar"
+                    displayShape="Circle"
+                    displaySize="XL"
+                    src="https://ui5.sap.com/test-resources/sap/m/images/Woman_01.png"/>
+
+                <ObjectHeader id="_IDGenObjectHeader"
+                    title="{FirstName} {LastName}"
+                    intro="{Title}"
+                    number="{EmployeeID}"
+                    numberUnit="Employee ID"/>
+
+            </VBox>
+
+            <Panel id="_IDGenPanel"
+                headerText="Personal Information"
+                class="sapUiMediumMargin">
+
+                <f:SimpleForm id="_IDGenSimpleForm"
+                    editable="false"
+                    layout="ResponsiveGridLayout">
+
+                    <Label id="_IDGenLabel" text="First Name"/>
+                    <Text id="_IDGenText1" text="{FirstName}"/>
+
+                    <Label id="_IDGenLabel1" text="Last Name"/>
+                    <Text id="_IDGenText2" text="{LastName}"/>
+
+                    <Label id="_IDGenLabel2" text="Title"/>
+                    <Text id="_IDGenText3" text="{Title}"/>
+
+                    <Label id="_IDGenLabel3" text="Courtesy"/>
+                    <Text id="_IDGenText4" text="{TitleOfCourtesy}"/>
+
+                    <Label id="_IDGenLabel4" text="Birth Date"/>
+                    <Text id="_IDGenText5" text="{BirthDate}"/>
+
+                    <Label id="_IDGenLabel5" text="Hire Date"/>
+                    <Text id="_IDGenText6" text="{HireDate}"/>
+
+                </f:SimpleForm>
+
+            </Panel>
+
+            <Panel id="_IDGenPanel1"
+                headerText="Address"
+                class="sapUiMediumMargin">
+
+                <f:SimpleForm id="_IDGenSimpleForm1"
+                    editable="false"
+                    layout="ResponsiveGridLayout">
+
+                    <Label id="_IDGenLabel6" text="Address"/>
+                    <Text id="_IDGenText7" text="{Address}"/>
+
+                    <Label id="_IDGenLabel7" text="City"/>
+                    <Text id="_IDGenText8" text="{City}"/>
+
+                    <Label id="_IDGenLabel8" text="Region"/>
+                    <Text id="_IDGenText9" text="{Region}"/>
+
+                    <Label id="_IDGenLabel9" text="Postal Code"/>
+                    <Text id="_IDGenText10" text="{PostalCode}"/>
+
+                    <Label id="_IDGenLabel10" text="Country"/>
+                    <Text id="_IDGenText11" text="{Country}"/>
+
+                </f:SimpleForm>
+
+            </Panel>
+
+            <Panel id="_IDGenPanel2"
+                headerText="Contact"
+                class="sapUiMediumMargin">
+
+                <f:SimpleForm id="_IDGenSimpleForm2"
+                    editable="false"
+                    layout="ResponsiveGridLayout">
+
+                    <Label id="_IDGenLabel11" text="Home Phone"/>
+                    <Text id="_IDGenText12" text="{HomePhone}"/>
+
+                    <Label id="_IDGenLabel12" text="Extension"/>
+                    <Text id="_IDGenText13" text="{Extension}"/>
+
+                </f:SimpleForm>
+
+            </Panel>
+
+            <Panel id="_IDGenPanel3"
+                headerText="Notes"
+                class="sapUiMediumMargin">
+
+                <Text id="_IDGenText14"
+                    text="{Notes}"
+                    wrapping="true"/>
+
+            </Panel>
+
         </content>
+
     </Page>
+
 </mvc:View>
